@@ -4,6 +4,8 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { toyService } from '../services/toy.service.js'
 import { saveToy } from '../store/actions/toy.actions.js'
 
+import '../assets/style/cmps/ToyEdit.css'
+
 export function ToyEdit() {
     const [toyToEdit, setToyToEdit] = useState(toyService.getEmptyToy())
     const [labels, setLabels] = useState([])

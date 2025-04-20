@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { ToyPreview } from './ToyPreview.jsx'
 
+import '../assets/style/cmps/ToyList.css'
+
 export function ToyList({ onRemoveToy, toys }) {
   return (
     <section className="toy-list container">

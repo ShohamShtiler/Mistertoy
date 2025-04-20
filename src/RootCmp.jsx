@@ -6,15 +6,14 @@ import { ToyDetails } from './pages/ToyDetails.jsx'
 import { ToyEdit } from './pages/ToyEdit.jsx'
 import { HomePage } from './pages/HomePage.jsx'
 import { AboutUs } from './pages/AboutUs.jsx'
-
-// import { AppHeader } from './cmps/AppHeader' // optional
+import { AppHeader } from './cmps/AppHeader' 
 
 export function App() {
   return (
     <Provider store={store}>
       <Router>
         <section className="app">
-          {/* <AppHeader /> */}
+          <AppHeader />
           <main className="main-layout">
             <Routes>
               <Route path="/" element={<ToyIndex />} />

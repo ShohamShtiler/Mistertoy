@@ -146,65 +146,83 @@ function _createToys() {
     if (!toys || !toys.length) {
         toys = [
             {
-              name: "Hanayama Puzzle",
+              name: "Benny the Bear",
               price: 70,
               labels: ["Puzzle", "Box game"],
-              imgUrl: "https://images.unsplash.com/photo-1605146768377-3e4c116c405b?w=400&h=400&fit=crop",
+              imgUrl: "bear.png",
               _id: "FHeoH",
               createdAt: 1721307706470,
               inStock: false
             },
             {
-              name: "Truck",
+              name: "Ella the Elephant",
               price: 90,
               labels: ["On wheels", "Outdoor"],
-              imgUrl: "https://images.unsplash.com/photo-1619983081563-e5e4bfb8a3e1?w=400&h=400&fit=crop",
+              imgUrl: "ellephent.png",
               _id: "r19SU",
               createdAt: 1720676977009,
               inStock: false
             },
             {
-              name: "Talking Doll",
+              name: "Leo the Lion",
               price: 130,
               labels: ["Doll", "Battery Powered", "Baby"],
-              imgUrl: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&h=400&fit=crop",
+              imgUrl: "lion.png",
               _id: "t101",
               createdAt: 1631031801011,
               inStock: true
             },
             {
-              name: "Wooden Puzzle Set",
+              name: "Ruby the Rabbit",
               price: 55,
               labels: ["Puzzle", "Baby"],
-              imgUrl: "https://images.unsplash.com/photo-1596464716121-e9fc13d3be5f?w=400&h=400&fit=crop",
+              imgUrl: "rabbit.png",
               _id: "t102",
               createdAt: 1631032801011,
               inStock: true
             },
             {
-              name: "Remote Control Car",
+              name: "Tino the T-Rex",
               price: 160,
               labels: ["On wheels", "Battery Powered", "Outdoor"],
-              imgUrl: "https://images.unsplash.com/photo-1604382352917-5f7f1a9a9632?w=400&h=400&fit=crop",
+              imgUrl: "dino.png",
               _id: "t103",
               createdAt: 1631033801011,
               inStock: true
             },
             {
-              name: "Colorful Building Blocks",
+              name: "Milo the Panda",
               price: 60,
               labels: ["Box game", "Baby"],
-              imgUrl: "https://images.unsplash.com/photo-1629904853716-f0bc54f1b7cf?w=400&h=400&fit=crop",
+              imgUrl: "panda.png",
               _id: "t104",
               createdAt: 1631034801011,
               inStock: true
             },
             {
-              name: "Artistic Paint Set",
+                name: " Gigi the Giraffe",
+                price: 80,
+                labels: ["Box game", "Baby"],
+                imgUrl: "gigi.png",
+                _id: "t105",
+                createdAt: 1631034801011,
+                inStock: false
+              },
+              {
+                name: "Ollie the Octopus",
+                price: 75,
+                labels: ["Box game", "Baby"],
+                imgUrl: "ollie.png",
+                _id: "t106",
+                createdAt: 1631034801011,
+                inStock: true
+              },
+            {
+              name: "Hanayama Puzzle",
               price: 45,
               labels: ["Art", "Box game"],
-              imgUrl: "https://images.unsplash.com/photo-1596464715927-9c3d7e3e6f99?w=400&h=400&fit=crop",
-              _id: "t105",
+              imgUrl: "hanayama-puzzle.jpg",
+              _id: "t107",
               createdAt: 1631035801011,
               inStock: false
             },
@@ -212,8 +230,8 @@ function _createToys() {
               name: "Dancing Robot",
               price: 110,
               labels: ["Battery Powered", "Outdoor"],
-              imgUrl: "https://images.unsplash.com/photo-1604909053127-43e9a4ae7c96?w=400&h=400&fit=crop",
-              _id: "t106",
+              imgUrl: "robot.jpg",
+              _id: "t108",
               createdAt: 1631036801011,
               inStock: true
             }

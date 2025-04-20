@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
+import '../assets/style/cmps/ToyPreview.css'
+
 export function ToyPreview({ toy }) {
   const [isImgLoading, setImgLoading] = useState(true)
 
@@ -8,8 +10,10 @@ export function ToyPreview({ toy }) {
     setImgLoading(false)
   }
 
-  const imgSrc = toy.imgUrl || `https://cdn.pixabay.com/photo/2017/01/06/19/15/toy-1959606_1280.jpg`
+  const imgSrc = `/img/${toy.imgUrl || 'fallback.jpg'}`
 
+  console.log('Toy:', toy.name, '| imgUrl:', toy.imgUrl)
+  console.log('imgSrc:', imgSrc)
   return (
     <Link to={`/toy/${toy._id}`} className="toy-card">
       <article className="toy-preview">

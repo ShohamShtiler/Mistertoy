@@ -3,6 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { toyService } from '../services/toy.service.js'
 import { showErrorMsg } from '../services/event-bus.service.js'
 
+import '../assets/style/cmps/ToyDetails.css'
+
 export function ToyDetails() {
   const [toy, setToy] = useState(null)
   const { toyId } = useParams()

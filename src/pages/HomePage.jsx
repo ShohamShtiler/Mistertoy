@@ -1,3 +1,5 @@
+import '../assets/style/cmps/HomePage.css'
+
 export function HomePage() {
     return (
       <section className="home-page main-layout">
