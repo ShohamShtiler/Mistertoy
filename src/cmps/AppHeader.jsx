@@ -3,7 +3,7 @@ import '../assets/style/cmps/AppHeader.css'
 
 export function AppHeader() {
   return (
-    <header className="app-header full main-layout">
+    <header className="app-header full">
       <section className="header-container">
         <h1 className="logo">Mister Toy</h1>
 

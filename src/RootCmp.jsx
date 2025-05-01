@@ -16,12 +16,11 @@ export function App() {
           <AppHeader />
           <main className="main-layout">
             <Routes>
-              <Route path="/" element={<ToyIndex />} />
+              <Route path="/" element={<HomePage />} />
               <Route path="/toy" element={<ToyIndex />} />
               <Route path="/toy/:toyId" element={<ToyDetails />} />
               <Route path="/toy/edit" element={<ToyEdit />} />
               <Route path="/toy/edit/:toyId" element={<ToyEdit />} />
-              <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutUs />} />
             </Routes>
           </main>

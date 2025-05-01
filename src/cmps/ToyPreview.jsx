@@ -12,8 +12,6 @@ export function ToyPreview({ toy }) {
 
   const imgSrc = `/img/${toy.imgUrl || 'fallback.jpg'}`
 
-  console.log('Toy:', toy.name, '| imgUrl:', toy.imgUrl)
-  console.log('imgSrc:', imgSrc)
   return (
     <Link to={`/toy/${toy._id}`} className="toy-card">
       <article className="toy-preview">
