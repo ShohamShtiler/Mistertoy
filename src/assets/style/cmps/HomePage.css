@@ -4,12 +4,13 @@
 }
 
 .home-page h1 {
-  font-size: 2rem;
+  font-size: 4rem;
+  margin-top: 200px;
+  font-weight: 100;
   margin-bottom: 1rem;
 }
 
-.home-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
+.home-page .lottie {
+  max-width: 800px;
+  margin: 0 auto;
 }

@@ -1,5 +1,5 @@
 .app-header {
-  background-color: lightblue;
+  background-color: #1A1A1D;
   border-bottom: 1px solid #ccc;
   padding: 1rem 0;
 }
@@ -14,16 +14,48 @@
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #333;
+  color: white;
 }
 
 .nav a {
   margin-left: 1rem;
   text-decoration: none;
-  color: #333;
-  font-weight: 500;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
 }
 
-.nav a.active {
+.nav-link {
+  margin-left: 1rem;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  transition: filter 0.1s ease, font-weight 0.1s ease;
+}
+
+.home-link {
   color: #2a7ae2;
 }
+
+.toy-link {
+  color: #f57c00;
+}
+
+.dashboard-link {
+  color: #43a047;
+}
+
+.about-link {
+  color: #B7B7B7;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  font-weight: 700;
+  text-decoration: none;
+  filter: brightness(1.8);
+}
+

@@ -1,15 +1,13 @@
 import '../assets/style/cmps/HomePage.css'
+import Lottie from 'lottie-react' 
+import welcomeAnimation from '../assets/style/setup/welcomeAnimation.json'
 
 export function HomePage() {
     return (
       <section className="home-page main-layout">
         <h1>Welcome to Mister Toy</h1>
   
-        <img
-          src="https://images.unsplash.com/photo-1619983081563-e5e4bfb8a3e1?w=600"
-          alt="Toys"
-          className="home-img"
-        />
+        <Lottie animationData={welcomeAnimation} loop={true} style={{ height: 500 }} />
       </section>
     )
   }
