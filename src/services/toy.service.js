@@ -40,9 +40,9 @@ function query(filterBy = {}, sortBy = {}, pageIdx = 0) {
         }
 
         // Filter by inStock
-        if (filterBy.inStock !== null) {
-            toysToShow = toysToShow.filter(toy => toy.inStock === JSON.parse(filterBy.inStock))
-        }
+        if (filterBy.inStock === 'true' || filterBy.inStock === 'false') {
+            toysToShow = toysToShow.filter(toy => toy.inStock === (filterBy.inStock === 'true'))
+          }
 
         // Filter by labels
         if (filterBy.labels?.length) {

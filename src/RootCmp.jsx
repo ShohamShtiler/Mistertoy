@@ -7,6 +7,8 @@ import { ToyEdit } from './pages/ToyEdit.jsx'
 import { HomePage } from './pages/HomePage.jsx'
 import { AboutUs } from './pages/AboutUs.jsx'
 import { AppHeader } from './cmps/AppHeader' 
+import { Dashboard } from './pages/Dashboard'
+
 
 export function App() {
   return (
@@ -22,6 +24,7 @@ export function App() {
               <Route path="/toy/edit" element={<ToyEdit />} />
               <Route path="/toy/edit/:toyId" element={<ToyEdit />} />
               <Route path="/about" element={<AboutUs />} />
+              <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
           </main>
         </section>
