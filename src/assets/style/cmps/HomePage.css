@@ -1,13 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
 .home-page {
   text-align: center;
   padding: 2rem;
 }
 
 .home-page h1 {
-  font-size: 4rem;
+  font-family: 'Modak', cursive ;
+  color: #F38181;
+  font-size: 150px;
   margin-top: 200px;
   font-weight: 100;
-  margin-bottom: 1rem;
+  margin-bottom: 8rem;
 }
 
 .home-page .lottie {

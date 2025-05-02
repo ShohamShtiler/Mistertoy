@@ -13,7 +13,7 @@ export function AppHeader() {
     <header className="app-header full">
       <section className="header-container">
         <h1 className="logo">Mister Toy</h1>
-
+        
         <nav className="nav">
           <NavLink to="/" end className="nav-link home-link">
             <FontAwesomeIcon icon={faHome} /> Home

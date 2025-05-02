@@ -1,5 +1,5 @@
 .main-layout {
-  background-color: #E4C59E; 
+  background-color: #FCE38A; 
   height: 100vh;
 }
 
@@ -7,7 +7,7 @@
     max-width: 600px;
     margin: auto;
     padding: 2rem;
-    background-color: #fafafa;
+    background-color: #EAFFD0;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
     text-align: center;
@@ -36,7 +36,7 @@
   }
   
   .toy-details h3 {
-    color: #2a7ae2;
+    color: #F38181;
     margin-bottom: 0.5rem;
   }
   
