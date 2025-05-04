@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { utilService } from '../services/util.service.js'
+import { FormControl, InputLabel, MenuItem, Select, Checkbox, ListItemText } from '@mui/material'
 
 import '../assets/style/cmps/ToyFilter.css'
 
@@ -60,11 +61,29 @@ export function ToyFilter({ filterBy, sortBy, onSetFilter, onSetSort, toyLabels 
         <option value="false">Out of Stock</option>
       </select>
 
-      <select multiple name="labels" value={filterState.labels} onChange={handleLabelsChange}>
-        {toyLabels.map(label => (
-          <option key={label} value={label}>{label}</option>
-        ))}
-      </select>
+      <FormControl sx={{ minWidth: 200 }}>
+        <InputLabel id="labels-select-label">Labels</InputLabel>
+        <Select
+          labelId="labels-select-label"
+          id="labels-select"
+          multiple
+          name="labels"
+          value={filterState.labels}
+          label="Labels"
+          onChange={(ev) => {
+            const val = ev.target.value
+            setFilterState(prev => ({ ...prev, labels: val }))
+          }}
+          renderValue={(selected) => selected.join(', ')}
+        >
+          {toyLabels.map((label) => (
+            <MenuItem key={label} value={label}>
+              <Checkbox checked={filterState.labels.includes(label)} />
+              <ListItemText primary={label} />
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
 
       <select value={`${sortState.type}|${sortState.desc}`} onChange={handleSortChange}>
         <option value="name|1">Name ↑</option>

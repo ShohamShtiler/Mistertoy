@@ -1,3 +1,5 @@
+import { BranchMap } from '../cmps/BranchMap'
+
 export function AboutUs() {
     return (
       <section className="about-us main-layout">
@@ -12,6 +14,7 @@ export function AboutUs() {
           in efficitur purus mauris eget sapien. Nam efficitur sem at elit dapibus,
           nec tristique elit malesuada.
         </p>
+        <BranchMap />
       </section>
     )
   }

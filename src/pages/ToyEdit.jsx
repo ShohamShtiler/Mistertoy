@@ -1,142 +1,123 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
+
+import { FormControl, InputLabel, MenuItem, Select, Checkbox, ListItemText } from '@mui/material'
+
 import { toyService } from '../services/toy.service.js'
 import { saveToy } from '../store/actions/toy.actions.js'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 
 import '../assets/style/cmps/ToyEdit.css'
 
+// Yup validation schema
+const schema = yup.object().shape({
+    name: yup.string().required('Name is required'),
+    price: yup
+        .number()
+        .typeError('Price must be a number')
+        .positive('Price must be positive')
+        .required('Price is required'),
+    labels: yup.array().min(1, 'Pick at least one label'),
+})
+
 export function ToyEdit() {
-    const [toyToEdit, setToyToEdit] = useState(toyService.getEmptyToy())
     const [labels, setLabels] = useState([])
 
     const { toyId } = useParams()
     const navigate = useNavigate()
 
+    const { register, handleSubmit, setValue, reset, watch, formState: { errors } } = useForm({
+        resolver: yupResolver(schema),
+        defaultValues: toyService.getEmptyToy()
+    })
+
+    const selectedLabels = watch('labels') || []
+
     useEffect(() => {
-        loadToy()
         loadToyLabels()
+        if (toyId) loadToy()
     }, [])
 
     function loadToy() {
-        if (!toyId) return
         toyService.getById(toyId)
-            .then(setToyToEdit)
+            .then(toy => reset(toy)) // pre-fill form
             .catch(err => {
-                console.log('Had issues in toy edit:', err)
-                navigate('/toy')
+                console.error('Toy not found:', err)
                 showErrorMsg('Toy not found!')
+                navigate('/toy')
             })
     }
 
     function loadToyLabels() {
         toyService.getToyLabels()
             .then(setLabels)
-            .catch(err => {
-                console.log('Had issues in toy edit:', err)
+            .catch(() => {
+                showErrorMsg('Cannot load labels')
                 navigate('/toy')
-                showErrorMsg('Toy not found!')
             })
     }
 
-    function handleChange({ target }) {
-        const { name, value, type, checked } = target
-        let fieldValue = value
-        if (type === 'checkbox') {
-            fieldValue = checked
-        } else if (type === 'number') {
-            fieldValue = +value
-        } else if (type === 'select-multiple') {
-            fieldValue = [...target.selectedOptions].map(option => option.value)
-        }
-
-        setToyToEdit(prevToy => ({
-            ...prevToy,
-            [name]: fieldValue
-        }))
-    }
-
-    function onSaveToy(ev) {
-        ev.preventDefault()
-        saveToy(toyToEdit)
-            .then((savedToy) => {
+    function onSubmit(toy) {
+        saveToy(toy)
+            .then(savedToy => {
                 showSuccessMsg(`Toy ${savedToy._id} saved successfully`)
                 navigate('/toy')
             })
-            .catch(err => {
-                showErrorMsg('Cannot save toy')
-            })
-    }
-
-    const priceValidations = {
-        min: "1",
-        required: true
+            .catch(() => showErrorMsg('Cannot save toy'))
     }
 
     return (
         <section className="toy-edit">
-            <h2>{toyToEdit._id ? 'Edit' : 'Add'} Toy</h2>
-            <form onSubmit={onSaveToy}>
+            <h2>{toyId ? 'Edit' : 'Add'} Toy</h2>
+
+            <form onSubmit={handleSubmit(onSubmit)} noValidate>
                 <div className="form-group">
                     <label htmlFor="name">Name:</label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={toyToEdit.name}
-                        onChange={handleChange}
-                        required
-                    />
+                    <input id="name" {...register('name')} />
+                    {errors.name && <p className="error">{errors.name.message}</p>}
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="price">Price:</label>
-                    <input
-                        type="number"
-                        id="price"
-                        name="price"
-                        value={toyToEdit.price || ''}
-                        {...priceValidations}
-                        // min="1"
-                        // required
-                        onChange={handleChange}
-                    />
+                    <input id="price" type="number" {...register('price')} />
+                    {errors.price && <p className="error">{errors.price.message}</p>}
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="labels">Labels:</label>
-                    <select
-                        id="labels"
-                        name="labels"
-                        multiple
-                        value={toyToEdit.labels}
-                        onChange={handleChange}
-                    >
-                        {labels.map(label => (
-                            <option key={label} value={label}>
-                                {label}
-                            </option>
-                        ))}
-                    </select>
+                    <FormControl sx={{ minWidth: 200 }}>
+                        <InputLabel id="labels-select-label">Labels</InputLabel>
+                        <Select
+                            labelId="labels-select-label"
+                            id="labels"
+                            label="Labels"
+                            multiple
+                            {...register('labels')}
+                            renderValue={(selected) => selected.join(', ')}
+                            defaultValue={[]}
+                        >
+                            {labels.map((label) => (
+                                <MenuItem key={label} value={label}>
+                                    <Checkbox checked={selectedLabels.includes(label)} />
+                                    <ListItemText primary={label} />
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
+                    {errors.labels && <p className="error">{errors.labels.message}</p>}
                 </div>
 
-                {toyToEdit._id && (
-                    <div className="form-group">
-                        <label>
-                            <input
-                                type="checkbox"
-                                name="inStock"
-                                checked={toyToEdit.inStock}
-                                onChange={handleChange}
-                            />
-                            In Stock
-                        </label>
-                    </div>
-                )}
+                <div className="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox" {...register('inStock')} />
+                        In Stock
+                    </label>
+                </div>
 
-                <button>
-                    {toyToEdit._id ? 'Update Toy' : 'Add'}
-                </button>
+                <button type="submit">{toyId ? 'Update Toy' : 'Add Toy'}</button>
             </form>
         </section>
     )
