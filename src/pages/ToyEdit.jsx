@@ -10,8 +10,6 @@ import { toyService } from '../services/toy.service.js'
 import { saveToy } from '../store/actions/toy.actions.js'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 
-import '../assets/style/cmps/ToyEdit.css'
-
 // Yup validation schema
 const schema = yup.object().shape({
     name: yup.string().required('Name is required'),

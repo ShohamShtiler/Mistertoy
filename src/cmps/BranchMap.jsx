@@ -4,7 +4,7 @@ import { useState } from 'react'
 import L from 'leaflet'
 import { BranchMapUpdater } from './BranchMapUpdater'
 
-import '../assets/style/cmps/BranchMap.css'
+
 
 const defaultIcon = new L.Icon({
     iconUrl: 'https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png',

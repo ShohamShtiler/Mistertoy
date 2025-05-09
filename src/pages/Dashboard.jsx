@@ -3,8 +3,6 @@ import { Pie, Line } from 'react-chartjs-2'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement } from 'chart.js'
 import { toyService } from '../services/toy.service.js'
 
-import '../assets/style/cmps/Dashboard.css'
-
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement)
 
 export function Dashboard() {

@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import '../assets/style/cmps/ToyPreview.css'
 
 export function ToyPreview({ toy }) {
   const [isImgLoading, setImgLoading] = useState(true)

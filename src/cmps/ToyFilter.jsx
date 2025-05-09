@@ -2,8 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import { utilService } from '../services/util.service.js'
 import { FormControl, InputLabel, MenuItem, Select, Checkbox, ListItemText } from '@mui/material'
 
-import '../assets/style/cmps/ToyFilter.css'
-
 export function ToyFilter({ filterBy, sortBy, onSetFilter, onSetSort, toyLabels }) {
   const [filterState, setFilterState] = useState({ ...filterBy })
   const [sortState, setSortState] = useState({ ...sortBy })

@@ -3,8 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { toyService } from '../services/toy.service.js'
 import { showErrorMsg } from '../services/event-bus.service.js'
 
-import '../assets/style/cmps/ToyDetails.css'
-
 export function ToyDetails() {
   const [toy, setToy] = useState(null)
   const { toyId } = useParams()
@@ -23,7 +21,7 @@ export function ToyDetails() {
   if (!toy) return <div>Loading toy...</div>
 
   return (
-    <section className="toy-details main-layout">
+    <section className="toy-details">
       <h1>{toy.name}</h1>
 
       <div className="img-container">

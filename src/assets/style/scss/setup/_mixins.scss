@@ -1,0 +1,17 @@
+// Flex layout shortcut
+@mixin flex($dir: row, $jc: center, $ai: center, $gap: 1rem) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $jc;
+  align-items: $ai;
+  gap: $gap;
+}
+
+// Media query mixin
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: $mobile) { @content; }
+  } @else if $breakpoint == tablet {
+    @media (max-width: $tablet) { @content; }
+  }
+}

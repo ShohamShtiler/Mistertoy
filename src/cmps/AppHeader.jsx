@@ -6,7 +6,6 @@ import {
   faChartPie,
   faInfoCircle,
 } from '@fortawesome/free-solid-svg-icons'
-import '../assets/style/cmps/AppHeader.css'
 
 export function AppHeader() {
   return (

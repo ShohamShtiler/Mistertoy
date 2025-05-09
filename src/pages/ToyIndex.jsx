@@ -6,8 +6,6 @@ import { ToyFilter } from '../cmps/ToyFilter.jsx'
 import { toyService } from '../services/toy.service.js'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 
-import '../assets/style/cmps/ToyIndex.css'
-
 export function ToyIndex() {
   const toys = useSelector(storeState => storeState.toyModule.toys)
   const isLoading = useSelector(storeState => storeState.toyModule.flag.isLoading)

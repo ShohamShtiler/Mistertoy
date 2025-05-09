@@ -1,6 +1,6 @@
-import '../assets/style/cmps/HomePage.css'
+
 import Lottie from 'lottie-react' 
-import welcomeAnimation from '../assets/style/setup/welcomeAnimation.json'
+import welcomeAnimation from '../assets/style/animations/welcomeAnimation.json'
 
 export function HomePage() {
     return (
