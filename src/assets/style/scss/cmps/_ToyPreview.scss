@@ -17,6 +17,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border-radius: 16px;
+      border: 8px solid #F8EDE3;
     }
 
     .skeleton-loader {
@@ -28,13 +30,15 @@
   }
 
   .toy-name {
-    font-size: 1.2rem;
+    font-family: "Alumni Sans Pinstripe", sans-serif;
+    font-size: 2rem;
     margin-bottom: 0.5rem;
+    color: #F8EDE3;
   }
 
   .toy-price {
     font-weight: bold;
-    color: $clr-primary;
+    color: #DFD3C3;
     margin-bottom: 0.3rem;
   }
 
@@ -43,11 +47,11 @@
     font-weight: 500;
 
     &.in-stock {
-      color: green;
+      color: #BBD8A3;
     }
 
     &.out-of-stock {
-      color: red;
+      color:#FF4545;
     }
   }
 }

@@ -6,6 +6,9 @@ import { ToyFilter } from '../cmps/ToyFilter.jsx'
 import { toyService } from '../services/toy.service.js'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 
+import Lottie from 'lottie-react'
+import DetailsAnimation from '../assets/style/animations/DetailsAnimation.json'
+
 export function ToyIndex() {
   const toys = useSelector(storeState => storeState.toyModule.toys)
   const isLoading = useSelector(storeState => storeState.toyModule.flag.isLoading)
@@ -70,6 +73,10 @@ export function ToyIndex() {
           </div>
         </>
       )}
+
+      <Lottie animationData={DetailsAnimation} loop={true} style={{ height: 200 }} />
+
+      
     </section>
   )
 }

@@ -1,3 +1,15 @@
+.about-us {
+    p {
+     margin-top: 50px;
+     text-align: center;
+    }
+
+    h1 {
+        margin: 0;
+        text-align: center;
+    }
+}
+
 .branch-map {
   margin-top: 2rem;
   display: flex;
@@ -20,17 +32,16 @@
     justify-content: center;
 
     button {
-      background-color: $clr-primary;
+      background-color: #D0B8A8;
       border: none;
       padding: 0.5rem 1rem;
-      color: $clr-light;
       font-weight: bold;
-      border-radius: 8px;
+      border-radius: 16px;
       cursor: pointer;
       transition: background-color 0.2s ease;
 
       &:hover {
-        background-color: darken($clr-primary, 10%);
+        background-color: #F8EDE3;
       }
     }
   }
@@ -44,18 +55,17 @@
 
     input {
       padding: 0.4rem 0.6rem;
-      border-radius: 4px;
+      border-radius: 16px;
       border: 1px solid #ccc;
       width: 150px;
     }
 
     button {
-      background-color: $clr-primary;
+      background-color: #D0B8A8;
       border: none;
-      color: $clr-light;
       font-weight: bold;
       padding: 0.5rem 1rem;
-      border-radius: 6px;
+      border-radius: 16px;
       cursor: pointer;
     }
   }

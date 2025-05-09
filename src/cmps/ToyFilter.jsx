@@ -43,7 +43,6 @@ export function ToyFilter({ filterBy, sortBy, onSetFilter, onSetSort, toyLabels 
 
   return (
     <section className="toy-filter">
-      <h3>Filter Toys</h3>
 
       <input
         type="text"
@@ -57,6 +56,17 @@ export function ToyFilter({ filterBy, sortBy, onSetFilter, onSetSort, toyLabels 
         <option value="all">All</option>
         <option value="true">In Stock</option>
         <option value="false">Out of Stock</option>
+      </select>
+
+      
+
+      <select value={`${sortState.type}|${sortState.desc}`} onChange={handleSortChange}>
+        <option value="name|1">Name ↑</option>
+        <option value="name|-1">Name ↓</option>
+        <option value="price|1">Price ↑</option>
+        <option value="price|-1">Price ↓</option>
+        <option value="createdAt|1">Created ↑</option>
+        <option value="createdAt|-1">Created ↓</option>
       </select>
 
       <FormControl sx={{ minWidth: 200 }}>
@@ -82,15 +92,6 @@ export function ToyFilter({ filterBy, sortBy, onSetFilter, onSetSort, toyLabels 
           ))}
         </Select>
       </FormControl>
-
-      <select value={`${sortState.type}|${sortState.desc}`} onChange={handleSortChange}>
-        <option value="name|1">Name ↑</option>
-        <option value="name|-1">Name ↓</option>
-        <option value="price|1">Price ↑</option>
-        <option value="price|-1">Price ↓</option>
-        <option value="createdAt|1">Created ↑</option>
-        <option value="createdAt|-1">Created ↓</option>
-      </select>
     </section>
   )
 }

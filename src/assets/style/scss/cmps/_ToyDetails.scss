@@ -3,11 +3,10 @@
   max-width: 600px;
   margin: auto;
   padding: 2rem;
-  background-color: #eaffd0;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   text-align: center;
   max-height: 850px;
+  max-width: 400px;
 
   .img-container {
     width: 100%;
@@ -22,16 +21,18 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border: 4px solid #8D493A;
     }
   }
 
   h1 {
     font-size: 1.8rem;
     margin-bottom: 1rem;
+    color: #8D493A;
   }
 
   h3 {
-    color: $clr-primary;
+    color: #8D493A;
     margin-bottom: 0.5rem;
   }
 
@@ -45,7 +46,8 @@
     gap: 0.5rem;
 
     li {
-      background-color: #e0e0e0;
+      background-color: #D0B8A8;
+      color: #F8EDE3;
       padding: 0.3em 0.7em;
       border-radius: 4px;
       font-size: 0.9rem;

@@ -3,6 +3,9 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { toyService } from '../services/toy.service.js'
 import { showErrorMsg } from '../services/event-bus.service.js'
 
+import Lottie from 'lottie-react'
+import DetailsAnimation from '../assets/style/animations/DetailsAnimation.json'
+
 export function ToyDetails() {
   const [toy, setToy] = useState(null)
   const { toyId } = useParams()
@@ -41,6 +44,7 @@ export function ToyDetails() {
       </ul>
 
       <p>Created at: {new Date(toy.createdAt).toLocaleString()}</p>
+      <Lottie animationData={DetailsAnimation} loop={true} style={{ height: 300 , width: 600 }} />
     </section>
   )
 }
