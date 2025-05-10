@@ -6,3 +6,10 @@
     padding-inline: 2em;
  }
 }
+
+.app-content.blurred {
+  pointer-events: none;
+  user-select: none;
+  filter: blur(3px) brightness(0.6);
+  transition: filter 0.4s ease;
+}

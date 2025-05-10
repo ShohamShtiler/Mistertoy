@@ -38,31 +38,10 @@ export function BranchMap() {
         setCenter(newMarker.position)
         setNewBranch({ name: '', lat: '', lng: '' })
     }
-    
+
 
     return (
         <section className="branch-map">
-            <MapContainer center={center} zoom={10} style={{ height: '400px', width: '100%' }}>
-                <BranchMapUpdater center={center} />
-                <TileLayer
-                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                {branches.map(branch => (
-                    <Marker key={branch.name} position={branch.position} icon={defaultIcon}>
-                        <Popup>{branch.name}</Popup>
-                    </Marker>
-                ))}
-            </MapContainer>
-
-            <div className="branch-buttons">
-                {branches.map(branch => (
-                    <button key={branch.name} onClick={() => setCenter(branch.position)}>
-                        {branch.name}
-                    </button>
-                ))}
-            </div>
-
             <form className="add-branch-form" onSubmit={handleAddBranch}>
                 <input
                     type="text"
@@ -89,6 +68,27 @@ export function BranchMap() {
                 />
                 <button type="submit">Add Location</button>
             </form>
+
+            <div className="branch-buttons">
+                {branches.map(branch => (
+                    <button key={branch.name} onClick={() => setCenter(branch.position)}>
+                        {branch.name}
+                    </button>
+                ))}
+            </div>
+
+            <MapContainer center={center} zoom={10} style={{ height: '500px', width: '100%' }}>
+                <BranchMapUpdater center={center} />
+                <TileLayer
+                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                {branches.map(branch => (
+                    <Marker key={branch.name} position={branch.position} icon={defaultIcon}>
+                        <Popup>{branch.name}</Popup>
+                    </Marker>
+                ))}
+            </MapContainer>
         </section>
     )
 }

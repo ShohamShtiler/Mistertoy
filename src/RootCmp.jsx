@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { store } from './store/store.js'
@@ -8,13 +9,29 @@ import { HomePage } from './pages/HomePage.jsx'
 import { AboutUs } from './pages/AboutUs.jsx'
 import { AppHeader } from './cmps/AppHeader' 
 import { Dashboard } from './pages/Dashboard'
+import { Loader } from './cmps/Loader'
 
 
 export function App() {
+
+   const [isLoading, setIsLoading] = useState(true)
+   const [isFading, setIsFading] = useState(false)
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsFading(true)
+      setTimeout(() => setIsLoading(false), 600) // wait for fade animation
+    }, 1800)
+
+    return () => clearTimeout(timeout)
+  }, [])
   return (
     <Provider store={store}>
       <Router>
         <section className="app">
+        {isLoading && <Loader isFading={isFading} />}
+          
+          <div className={`app-content ${isLoading ? 'blurred' : ''}`}>
           <AppHeader />
           <main className="main-layout">
             <Routes>
@@ -27,6 +44,8 @@ export function App() {
               <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
           </main>
+          </div>
+
         </section>
       </Router>
     </Provider>
