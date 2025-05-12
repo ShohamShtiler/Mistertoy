@@ -11,7 +11,7 @@ export function Dashboard() {
   const [lineChartData, setLineChartData] = useState(null)
 
   useEffect(() => {
-    toyService.query().then(toys => {
+    toyService.query().then(({ toys }) => {
       setLabelPriceData(getPricesPerLabel(toys))
       setInStockData(getInStockByLabel(toys))
       setLineChartData(getRandomLineData())
@@ -48,6 +48,8 @@ export function Dashboard() {
 
 function getPricesPerLabel(toys) {
   const labelMap = {}
+
+  console.log('📊 Dashboard toys:', toys)
 
   toys.forEach(toy => {
     toy.labels.forEach(label => {

@@ -23,6 +23,8 @@ export function ToyIndex() {
   const [pageIdx, setPageIdx] = useState(0)
   const [toyLabels, setToyLabels] = useState([])
 
+  // console.log('🧪 sortBy sending to backend:', sortBy)
+
   useEffect(() => {
     Promise.all([
       toyService.getToyLabels(),
