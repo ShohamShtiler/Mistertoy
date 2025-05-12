@@ -5,11 +5,16 @@ import { ToyList } from '../cmps/ToyList.jsx'
 import { ToyFilter } from '../cmps/ToyFilter.jsx'
 import { toyService } from '../services/toy.service.js'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
+import { useDispatch } from 'react-redux'
 
 import Lottie from 'lottie-react'
 import DetailsAnimation from '../assets/style/animations/DetailsAnimation.json'
 
+
+
 export function ToyIndex() {
+  const dispatch = useDispatch()
+
   const toys = useSelector(storeState => storeState.toyModule.toys)
   const isLoading = useSelector(storeState => storeState.toyModule.flag.isLoading)
   const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
@@ -19,7 +24,10 @@ export function ToyIndex() {
   const [toyLabels, setToyLabels] = useState([])
 
   useEffect(() => {
-    Promise.all([toyService.getToyLabels(), loadToys(pageIdx)])
+    Promise.all([
+      toyService.getToyLabels(),
+      dispatch(loadToys(pageIdx)) // ← dispatch it!
+    ])
       .then(([labels]) => setToyLabels(labels))
       .catch(err => {
         console.log('err:', err)
@@ -28,12 +36,12 @@ export function ToyIndex() {
   }, [filterBy, sortBy, pageIdx])
 
   function onSetFilter(newFilter) {
-    setFilter(newFilter)
+    dispatch(setFilter(newFilter))
     setPageIdx(0)
   }
 
   function onSetSort(newSort) {
-    setSort(newSort)
+    dispatch(setSort(newSort)) // ✅ dispatch the Redux action!
     setPageIdx(0)
   }
 
@@ -49,6 +57,9 @@ export function ToyIndex() {
         showErrorMsg('Cannot remove toy')
       })
   }
+
+  // console.log('toys:', toys)
+  // console.log('typeof toys:', typeof toys, '| value:', toys)
 
   return (
     <section className="toy-index main-layout">
@@ -76,7 +87,7 @@ export function ToyIndex() {
 
       <Lottie animationData={DetailsAnimation} loop={true} style={{ height: 200 }} />
 
-      
+
     </section>
   )
 }
