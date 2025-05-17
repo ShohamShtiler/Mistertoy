@@ -28,6 +28,7 @@ export const toyService = {
     getDefaultSort,
     getToyLabels,
     getToyLabelCounts,
+    addToyMsg
 }
 
 function query(filterBy = {}, sortBy = {}, pageIdx = 0) {
@@ -104,106 +105,6 @@ function _getRandomLabels() {
     return randomLabels
 }
 
-
-
-// function _createToys() {
-//     let toys = utilService.loadFromStorage(TOY_DB)
-//     if (!toys || !toys.length) {
-//         toys = [
-//             {
-//               name: "Benny the Bear",
-//               price: 70,
-//               labels: ["Puzzle", "Box game"],
-//               imgUrl: "bear.png",
-//               _id: "FHeoH",
-//               createdAt: 1721307706470,
-//               inStock: false
-//             },
-//             {
-//               name: "Ella the Elephant",
-//               price: 90,
-//               labels: ["On wheels", "Outdoor"],
-//               imgUrl: "ellephent.png",
-//               _id: "r19SU",
-//               createdAt: 1720676977009,
-//               inStock: false
-//             },
-//             {
-//               name: "Leo the Lion",
-//               price: 130,
-//               labels: ["Doll", "Battery Powered", "Baby"],
-//               imgUrl: "lion.png",
-//               _id: "t101",
-//               createdAt: 1631031801011,
-//               inStock: true
-//             },
-//             {
-//               name: "Ruby the Rabbit",
-//               price: 55,
-//               labels: ["Puzzle", "Baby"],
-//               imgUrl: "rabbit.png",
-//               _id: "t102",
-//               createdAt: 1631032801011,
-//               inStock: true
-//             },
-//             {
-//               name: "Tino the T-Rex",
-//               price: 160,
-//               labels: ["On wheels", "Battery Powered", "Outdoor"],
-//               imgUrl: "dino.png",
-//               _id: "t103",
-//               createdAt: 1631033801011,
-//               inStock: true
-//             },
-//             {
-//               name: "Milo the Panda",
-//               price: 60,
-//               labels: ["Box game", "Baby"],
-//               imgUrl: "panda.png",
-//               _id: "t104",
-//               createdAt: 1631034801011,
-//               inStock: true
-//             },
-//             {
-//                 name: " Gigi the Giraffe",
-//                 price: 80,
-//                 labels: ["Box game", "Baby"],
-//                 imgUrl: "gigi.png",
-//                 _id: "t105",
-//                 createdAt: 1631034801011,
-//                 inStock: false
-//               },
-//               {
-//                 name: "Ollie the Octopus",
-//                 price: 75,
-//                 labels: ["Box game", "Baby"],
-//                 imgUrl: "ollie.png",
-//                 _id: "t106",
-//                 createdAt: 1631034801011,
-//                 inStock: true
-//               },
-//             {
-//               name: "Hanayama Puzzle",
-//               price: 45,
-//               labels: ["Art", "Box game"],
-//               imgUrl: "hanayama-puzzle.jpg",
-//               _id: "t107",
-//               createdAt: 1631035801011,
-//               inStock: false
-//             },
-//             {
-//               name: "Dancing Robot",
-//               price: 110,
-//               labels: ["Battery Powered", "Outdoor"],
-//               imgUrl: "robot.jpg",
-//               _id: "t108",
-//               createdAt: 1631036801011,
-//               inStock: true
-//             }
-//           ]
-
-
-//         utilService.saveToStorage(TOY_DB, toys)
-//     }
-
-// }
+function addToyMsg(toyId, msg) { 
+  return httpService.post(`toy/${toyId}/msg`, msg)
+}

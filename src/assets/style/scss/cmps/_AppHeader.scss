@@ -11,9 +11,14 @@
 
     .logo {
       font-family: "Lexend Giga", sans-serif;
-      font-size: 2rem;
+      font-size: 1.5rem;
       font-weight: 400;
       color: $clr-light;
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
     }
   }
 
@@ -46,7 +51,6 @@
     display: inline-flex;
     align-items: center;
     gap: 0.4em;
-    padding-bottom: 6px;
     transition: box-shadow 0.2s ease, font-weight 0.15s ease, filter 0.15s ease;
 
     &.home-link {
@@ -66,9 +70,37 @@
     &.active {
       font-weight: 700;
       box-shadow: inset 0 -2px 0 rgba(255, 255, 255, 0.7);
+      padding-bottom: 4px;
       color: #fff;
     }
   }
+
+  .nav-link.login-link {
+  background-color: #ffd700;
+  border: none;
+  color: #4b2e2e;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #ffcf40;
+    color: #3d1f1f;
+    cursor: pointer;
+    box-shadow: none;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+  }
+
+  svg {
+    font-size: 1rem;
+  }
+}
 
   // Desktop layout
   .nav-sidebar {
@@ -106,7 +138,10 @@
         font-size: 1.2rem;
         font-weight: 600;
         margin-left: 0;
+        padding-bottom: 6px;
+
       }
     }
   }
 }
+

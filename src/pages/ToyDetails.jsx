@@ -8,6 +8,7 @@ import DetailsAnimation from '../assets/style/animations/DetailsAnimation.json'
 
 export function ToyDetails() {
   const [toy, setToy] = useState(null)
+  const [newMsg, setNewMsg] = useState('')
   const { toyId } = useParams()
   const navigate = useNavigate()
 
@@ -16,19 +17,34 @@ export function ToyDetails() {
       .then(setToy)
       .catch(err => {
         console.error('Failed to load toy', err)
-        showErrorMsg('Failed to load toy')
+        showErrorMsg('Cannot load toy')
         navigate('/toy')
       })
   }, [toyId])
 
   if (!toy) return <div>Loading toy...</div>
 
+  function onAddMsg(ev) {
+  ev.preventDefault()
+  if (!newMsg.trim()) return
+
+  toyService.addToyMsg(toy._id, { txt: newMsg })
+    .then(savedMsg => {
+      setToy(prev => ({ ...prev, msgs: [...(prev.msgs || []), savedMsg] }))
+      setNewMsg('')
+    })
+    .catch(err => {
+      console.log('Cannot add msg', err)
+      showErrorMsg('You must be logged in')
+    })
+}
+
   return (
     <section className="toy-details">
       <h1>{toy.name}</h1>
 
       <div className="img-container">
-      <img src={`/img/${toy.imgUrl}`} alt={toy.name} />
+        <img src={`/img/${toy.imgUrl}`} alt={toy.name} />
       </div>
 
       <h3>Price: ${toy.price}</h3>
@@ -43,8 +59,34 @@ export function ToyDetails() {
         ))}
       </ul>
 
+      {toy?.msgs && (
+        <section className="toy-msgs">
+          <h3>Comments</h3>
+          <ul>
+            {toy.msgs.map(msg => (
+              <li key={msg.id}>
+                <strong>{msg.by.fullname}:</strong> {msg.txt}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <section className="add-msg">
+        <h4>Add a comment</h4>
+        <form onSubmit={onAddMsg}>
+          <input
+            type="text"
+            value={newMsg}
+            onChange={(ev) => setNewMsg(ev.target.value)}
+            placeholder="Write a comment..."
+          />
+          <button>Add</button>
+        </form>
+      </section>
+
       <p>Created at: {new Date(toy.createdAt).toLocaleString()}</p>
-      <Lottie animationData={DetailsAnimation} loop={true} style={{ height: 300 , width: 600 }} />
+      <Lottie animationData={DetailsAnimation} loop={true} style={{ height: 300, width: 600 }} />
     </section>
   )
 }

@@ -1,0 +1,44 @@
+.user-controls {
+  display: flex;
+  flex-direction: row; // ✅ layout horizontally
+  align-items: center;
+  gap: 0.5rem;
+
+ .username {
+  font-weight: bold;
+  color: #ffe18d; // ✅ Soft gold / warm tone
+  font-size: 0.95rem;
+}
+
+
+  .logout-btn {
+  background-color: #ffcf40;
+  color: #4b2e2e;
+  border: none;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+  }
+
+  svg {
+    font-size: 1rem;
+  }
+
+    @media (max-width: $mobile) {
+  .user-controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+  }
+}
