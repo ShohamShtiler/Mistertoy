@@ -61,49 +61,49 @@ export function AppHeader() {
 
   return (
     <header className="app-header full">
-  <section className="header-container">
-    <h1 className="logo">Mister Toy</h1>
+      <section className="header-container">
+        <h1 className="logo">Mister Toy</h1>
 
-    <button className="menu-toggle" onClick={toggleMenu}>
-      {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
-    </button>
+        <button className="menu-toggle" onClick={toggleMenu}>
+          {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
+        </button>
 
-    {isMenuOpen && <div className="overlay" onClick={closeMenu}></div>}
+        {isMenuOpen && <div className="overlay" onClick={closeMenu}></div>}
 
-    <div className="header-right">
-      <nav className={`nav-sidebar ${isMenuOpen ? 'open' : ''}`}>
-        <NavLink to="/" end className="nav-link home-link" onClick={closeMenu}>
-          <FontAwesomeIcon icon={faHome} /> Home
-        </NavLink>
-        <NavLink to="/toy" className="nav-link toy-link" onClick={closeMenu}>
-          <FontAwesomeIcon icon={faGamepad} /> Toys
-        </NavLink>
-        <NavLink to="/dashboard" className="nav-link dashboard-link" onClick={closeMenu}>
-          <FontAwesomeIcon icon={faChartPie} /> Dashboard
-        </NavLink>
-        <NavLink to="/about" className="nav-link about-link" onClick={closeMenu}>
-          <FontAwesomeIcon icon={faInfoCircle} /> About
-        </NavLink>
-      </nav>
+        <div className="header-right">
+          <nav className={`nav-sidebar ${isMenuOpen ? 'open' : ''}`}>
+            <NavLink to="/" end className="nav-link home-link" onClick={closeMenu}>
+              <FontAwesomeIcon icon={faHome} /> Home
+            </NavLink>
+            <NavLink to="/toy" className="nav-link toy-link" onClick={closeMenu}>
+              <FontAwesomeIcon icon={faGamepad} /> Toys
+            </NavLink>
+            <NavLink to="/dashboard" className="nav-link dashboard-link" onClick={closeMenu}>
+              <FontAwesomeIcon icon={faChartPie} /> Dashboard
+            </NavLink>
+            <NavLink to="/about" className="nav-link about-link" onClick={closeMenu}>
+              <FontAwesomeIcon icon={faInfoCircle} /> About
+            </NavLink>
 
-      <section className="user-controls">
-        {loggedInUser ? (
-          <>
-            <span className="username">Welcome, {loggedInUser.fullname}</span>
-            <button onClick={onLogout} className="logout-btn">
-              <FontAwesomeIcon icon={faRightFromBracket} /> Logout
-            </button>
-          </>
-        ) : (
-          <button className="nav-link login-link" onClick={() => { closeMenu(); openLoginModal() }}>
-            <FontAwesomeIcon icon={faRightToBracket} /> Login
-          </button>
-        )}
+            <section className="user-controls">
+              {loggedInUser ? (
+                <>
+                  <span className="username">Welcome, {loggedInUser.fullname}</span>
+                  <button onClick={onLogout} className="logout-btn">
+                    <FontAwesomeIcon icon={faRightFromBracket} /> Logout
+                  </button>
+                </>
+              ) : (
+                <button className="nav-link login-link" onClick={() => { closeMenu(); openLoginModal() }}>
+                  <FontAwesomeIcon icon={faRightToBracket} /> Login
+                </button>
+              )}
+            </section>
+          </nav>
+        </div>
       </section>
-    </div>
-  </section>
 
-  {isLoginModalOpen && <LoginSignup onClose={closeLoginModal} />}
-</header>
+      {isLoginModalOpen && <LoginSignup onClose={closeLoginModal} />}
+    </header>
   )
 }
