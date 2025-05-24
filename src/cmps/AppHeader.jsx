@@ -18,6 +18,7 @@ import {
   faRightToBracket,
   faRightFromBracket,
   faUser,
+  faStar,
 } from '@fortawesome/free-solid-svg-icons'
 
 export function AppHeader() {
@@ -85,6 +86,9 @@ export function AppHeader() {
             </NavLink>
             <NavLink to="/about" className="nav-link about-link" onClick={closeMenu}>
               <FontAwesomeIcon icon={faInfoCircle} /> About
+            </NavLink>
+            <NavLink to="/review" className="nav-link review-link" onClick={closeMenu}>
+              <FontAwesomeIcon icon={faStar} /> Reviews
             </NavLink>
 
             <section className="user-controls">

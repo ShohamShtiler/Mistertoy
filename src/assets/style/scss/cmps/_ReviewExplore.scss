@@ -1,0 +1,30 @@
+.review-explore {
+  h1 {
+    margin-bottom: 1em;
+  }
+
+  input {
+    width: 100%;
+    max-width: 300px;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .review-list {
+    list-style: none;
+    padding: 0;
+
+    li {
+      background: #f8ede3;
+      padding: 1em;
+      margin-bottom: 0.5em;
+      border-radius: 5px;
+
+      strong {
+        color: #8d493a;
+      }
+    }
+  }
+}

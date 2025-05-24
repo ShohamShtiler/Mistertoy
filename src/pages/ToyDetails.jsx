@@ -54,19 +54,19 @@ export function ToyDetails() {
   }
 
   function onAddReview(ev) {
-  ev.preventDefault()
+    ev.preventDefault()
 
-  if (!newReview.trim()) return
+    if (!newReview.trim()) return
 
-  reviewService.add({ txt: newReview, toyId })
-  .then(() => reviewService.query({ toyId })) // ✅ Again, filter!
-  .then(setReviews)
-  .then(() => setNewReview(''))
-  .catch(err => {
-    console.error('Failed to add review', err)
-    showErrorMsg('Cannot add review')
-  })
-}
+    reviewService.add({ txt: newReview, toyId })
+      .then(() => reviewService.query({ toyId })) // ✅ Again, filter!
+      .then(setReviews)
+      .then(() => setNewReview(''))
+      .catch(err => {
+        console.error('Failed to add review', err)
+        showErrorMsg('Cannot add review')
+      })
+  }
 
   return (
     <section className="toy-details">
@@ -133,8 +133,8 @@ export function ToyDetails() {
         </form>
       </section>
 
-      <p>Created at: {new Date(toy.createdAt).toLocaleString()}</p>
-      <Lottie animationData={DetailsAnimation} loop={true} style={{ height: 300, width: 600 }} />
+      <p className='date'>Created at: {new Date(toy.createdAt).toLocaleString()}</p>
+      {/* <Lottie animationData={DetailsAnimation} loop={true} style={{ height: 300, width: 600 }} /> */}
     </section>
   )
 }

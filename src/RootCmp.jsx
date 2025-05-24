@@ -13,6 +13,7 @@ import { Loader } from './cmps/Loader'
 import { LoginSignup } from './cmps/LoginSignup.jsx'
 import { UserMsg } from './cmps/UserMsg.jsx'
 import { UserDetails } from './pages/UserDetails.jsx'
+import { ReviewExplore } from './pages/ReviewExplore.jsx'
 
 
 export function App() {
@@ -47,6 +48,7 @@ export function App() {
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/login" element={<LoginSignup />} />
                 <Route path="/user" element={<UserDetails />} />
+                <Route path="/review" element={<ReviewExplore />} />
               </Routes>
             </main>
           </div>

@@ -40,5 +40,14 @@
   .user-controls {
     flex-direction: column;
     align-items: flex-start;
+
+    .username{
+      color: black;
+    }
   }
+
+  .app-header .nav-sidebar .nav-link.profile-link {
+        font-size: 16px;
+        color: black;
+    }
 }
