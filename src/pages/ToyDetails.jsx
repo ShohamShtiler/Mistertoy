@@ -3,6 +3,9 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { toyService } from '../services/toy.service.js'
 import { showErrorMsg } from '../services/event-bus.service.js'
 
+import { reviewService } from '../services/review.service.js'
+import { userService } from '../services/user.service.js'
+
 import Lottie from 'lottie-react'
 import DetailsAnimation from '../assets/style/animations/DetailsAnimation.json'
 
@@ -10,9 +13,12 @@ export function ToyDetails() {
   const [toy, setToy] = useState(null)
   const [newMsg, setNewMsg] = useState('')
   const { toyId } = useParams()
+  const [reviews, setReviews] = useState([])
+  const [newReview, setNewReview] = useState('')
   const navigate = useNavigate()
 
   useEffect(() => {
+    // Load the toy by ID
     toyService.getById(toyId)
       .then(setToy)
       .catch(err => {
@@ -20,23 +26,46 @@ export function ToyDetails() {
         showErrorMsg('Cannot load toy')
         navigate('/toy')
       })
+
+    // Load reviews for the toy
+    reviewService.query({ toyId })
+      .then(setReviews)
+      .catch(err => {
+        console.error('Failed to load reviews', err)
+        showErrorMsg('Cannot load reviews')
+      })
   }, [toyId])
 
   if (!toy) return <div>Loading toy...</div>
 
   function onAddMsg(ev) {
-  ev.preventDefault()
-  if (!newMsg.trim()) return
+    ev.preventDefault()
+    if (!newMsg.trim()) return
 
-  toyService.addToyMsg(toy._id, { txt: newMsg })
-    .then(savedMsg => {
-      setToy(prev => ({ ...prev, msgs: [...(prev.msgs || []), savedMsg] }))
-      setNewMsg('')
-    })
-    .catch(err => {
-      console.log('Cannot add msg', err)
-      showErrorMsg('You must be logged in')
-    })
+    toyService.addToyMsg(toy._id, { txt: newMsg })
+      .then(savedMsg => {
+        setToy(prev => ({ ...prev, msgs: [...(prev.msgs || []), savedMsg] }))
+        setNewMsg('')
+      })
+      .catch(err => {
+        console.log('Cannot add msg', err)
+        showErrorMsg('You must be logged in')
+      })
+  }
+
+  function onAddReview(ev) {
+  ev.preventDefault()
+
+  if (!newReview.trim()) return
+
+  reviewService.add({ txt: newReview, toyId })
+  .then(() => reviewService.query({ toyId })) // ✅ Again, filter!
+  .then(setReviews)
+  .then(() => setNewReview(''))
+  .catch(err => {
+    console.error('Failed to add review', err)
+    showErrorMsg('Cannot add review')
+  })
 }
 
   return (
@@ -69,19 +98,38 @@ export function ToyDetails() {
               </li>
             ))}
           </ul>
+          <section className="add-msg">
+            <form onSubmit={onAddMsg}>
+              <input
+                type="text"
+                value={newMsg}
+                onChange={(ev) => setNewMsg(ev.target.value)}
+                placeholder="Write a comment..."
+              />
+              <button>Add Comment</button>
+            </form>
+          </section>
         </section>
       )}
 
-      <section className="add-msg">
-        <h4>Add a comment</h4>
-        <form onSubmit={onAddMsg}>
+      <section className="toy-reviews">
+        <h3>Reviews</h3>
+        <ul>
+          {reviews.map(review => (
+            <li key={review._id}>
+              <strong>{review.user?.fullname || 'Unknown'}:</strong> {review.txt}
+            </li>
+          ))}
+        </ul>
+
+        <form onSubmit={onAddReview} className="add-review">
           <input
             type="text"
-            value={newMsg}
-            onChange={(ev) => setNewMsg(ev.target.value)}
-            placeholder="Write a comment..."
+            value={newReview}
+            onChange={(e) => setNewReview(e.target.value)}
+            placeholder="Write a review..."
           />
-          <button>Add</button>
+          <button>Add Review</button>
         </form>
       </section>
 
