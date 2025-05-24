@@ -21,6 +21,7 @@ export function loadToys(pageIdx) {
       .then(res => {
         // console.log('🚀 Loaded toys from backend:', toys)
        dispatch({ type: 'SET_TOYS', toys: res.toys }) // make sure toys is an array
+       dispatch({ type: 'SET_MAX_PAGE', maxPage: res.maxPage })
       })
       .catch(err => {
         console.error('❌ Cannot load toys', err)

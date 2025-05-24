@@ -14,6 +14,7 @@ export const TOY_UNDO = 'TOY_UNDO'
 
 const initialState = {
     toys: [],
+    maxPage: 1,
     filterBy: toyService.getDefaultFilter(),
     sortBy: toyService.getDefaultSort(),
     lastToys: [],
@@ -58,6 +59,9 @@ export function toyReducer(state = initialState, action = {}) {
 
         case SET_ERROR:
             return { ...state, flag: { ...state.flag, error: action.error } }
+
+        case 'SET_MAX_PAGE':
+            return { ...state, maxPage: action.maxPage }
 
         default:
             return state

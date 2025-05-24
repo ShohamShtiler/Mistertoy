@@ -1,0 +1,54 @@
+.user-details {
+  max-width: 700px;
+  margin: auto;
+  background-color: #F8EDE3;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  color: #4b2e2e;
+  font-family: 'Montserrat', sans-serif;
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #8D493A;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    color: #8D493A;
+  }
+
+  .review-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+
+    li {
+      background-color: #DFD3C3;
+      margin-bottom: 0.75rem;
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 6px solid #8D493A;
+
+      .review-toy {
+        font-weight: bold;
+        color: #8D493A;
+        margin-bottom: 0.3rem;
+        display: block;
+      }
+
+      .review-txt {
+        font-style: italic;
+        font-size: 0.95rem;
+      }
+    }
+  }
+
+  .no-reviews {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #777;
+  }
+}

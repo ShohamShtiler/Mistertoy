@@ -8,6 +8,7 @@ import { LoginSignup } from './LoginSignup.jsx'
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
 
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faHome,
@@ -16,6 +17,7 @@ import {
   faInfoCircle,
   faRightToBracket,
   faRightFromBracket,
+  faUser,
 } from '@fortawesome/free-solid-svg-icons'
 
 export function AppHeader() {
@@ -89,12 +91,24 @@ export function AppHeader() {
               {loggedInUser ? (
                 <>
                   <span className="username">Welcome, {loggedInUser.fullname}</span>
+
+                  {/* Profile Link */}
+                  <NavLink to="/user" className="nav-link profile-link" onClick={closeMenu}>
+                    <FontAwesomeIcon icon={faUser} /> Profile
+                  </NavLink>
+
                   <button onClick={onLogout} className="logout-btn">
                     <FontAwesomeIcon icon={faRightFromBracket} /> Logout
                   </button>
                 </>
               ) : (
-                <button className="nav-link login-link" onClick={() => { closeMenu(); openLoginModal() }}>
+                <button
+                  className="nav-link login-link"
+                  onClick={() => {
+                    closeMenu()
+                    openLoginModal()
+                  }}
+                >
                   <FontAwesomeIcon icon={faRightToBracket} /> Login
                 </button>
               )}

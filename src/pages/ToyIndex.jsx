@@ -15,6 +15,7 @@ import DetailsAnimation from '../assets/style/animations/DetailsAnimation.json'
 export function ToyIndex() {
   const dispatch = useDispatch()
 
+  const maxPage = useSelector(storeState => storeState.toyModule.maxPage)
   const toys = useSelector(storeState => storeState.toyModule.toys)
   const isLoading = useSelector(storeState => storeState.toyModule.flag.isLoading)
   const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
@@ -82,7 +83,8 @@ export function ToyIndex() {
           <ToyList toys={toys} onRemoveToy={onRemoveToy} />
           <div className="pagination">
             <button onClick={() => onNextPage(-1)} disabled={pageIdx === 0}>Prev</button>
-            <button onClick={() => onNextPage(1)}>Next</button>
+            <button onClick={() => onNextPage(1)} disabled={pageIdx >= maxPage - 1}>Next</button>
+            {!toys.length && <p>No toys to show</p>}
           </div>
         </>
       )}
