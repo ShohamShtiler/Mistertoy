@@ -14,6 +14,7 @@ import { LoginSignup } from './cmps/LoginSignup.jsx'
 import { UserMsg } from './cmps/UserMsg.jsx'
 import { UserDetails } from './pages/UserDetails.jsx'
 import { ReviewExplore } from './pages/ReviewExplore.jsx'
+import { AppFooter } from './cmps/AppFooter.jsx'
 
 
 export function App() {
@@ -51,6 +52,7 @@ export function App() {
                 <Route path="/review" element={<ReviewExplore />} />
               </Routes>
             </main>
+            <AppFooter />
           </div>
            <UserMsg />
         </section>

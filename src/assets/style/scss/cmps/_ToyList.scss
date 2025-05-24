@@ -39,6 +39,7 @@
       background-color: #D0B8A8;
       color: rgb(12, 9, 9);
       cursor: pointer;
+      transition: background-color ease-in-out 0.2s;
 
       &:hover {
         background-color: #F8EDE3;

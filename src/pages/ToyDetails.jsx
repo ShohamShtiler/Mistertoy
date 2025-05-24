@@ -91,13 +91,19 @@ export function ToyDetails() {
       {toy?.msgs && (
         <section className="toy-msgs">
           <h3>Comments</h3>
-          <ul>
-            {toy.msgs.map(msg => (
-              <li key={msg.id}>
-                <strong>{msg.by.fullname}:</strong> {msg.txt}
-              </li>
-            ))}
-          </ul>
+
+          {toy?.msgs?.length ? (
+            <ul>
+              {toy.msgs.map(msg => (
+                <li key={msg.id}>
+                  <strong>{msg.by.fullname}:</strong> {msg.txt}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No comments yet. Be the first to comment!</p>
+          )}
+
           <section className="add-msg">
             <form onSubmit={onAddMsg}>
               <input
