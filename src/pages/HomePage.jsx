@@ -6,7 +6,7 @@ export function HomePage() {
   return (
     <section className="home-page main-layout">
       <h1 className="animate__animated animate__fadeInDown">Welcome</h1>
-      <Lottie animationData={stars} loop={true} style={{ height: 600 }} />
+      <Lottie className='stars' animationData={stars} loop={true} />
     </section>
   )
 }

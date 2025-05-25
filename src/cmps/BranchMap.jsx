@@ -42,7 +42,7 @@ export function BranchMap() {
 
     return (
         <section className="branch-map">
-            <form className="add-branch-form" onSubmit={handleAddBranch}>
+            {/* <form className="add-branch-form" onSubmit={handleAddBranch}>
                 <input
                     type="text"
                     placeholder="New location"
@@ -67,7 +67,7 @@ export function BranchMap() {
                     required
                 />
                 <button type="submit">Add Location</button>
-            </form>
+            </form> */}
 
             <div className="branch-buttons">
                 {branches.map(branch => (

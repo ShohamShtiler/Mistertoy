@@ -11,9 +11,8 @@
     margin-bottom: 8rem;
   }
 
-  .lottie {
-    max-width: 800px;
-    margin: 0 auto;
+  .stars{ 
+    height: 600px;
   }
 }
 
@@ -21,10 +20,6 @@
   .home-page h1 {
     font-size: 5rem;
     margin-top: 120px;
-  }
-
-  .lottie {
-    max-width: 90%;
   }
 }
 
@@ -35,7 +30,8 @@
     margin-bottom: 5rem;
   }
 
-  .lottie {
-    max-width: 100%;
+
+  .stars {
+    height: 300px !important;
   }
 }
