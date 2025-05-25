@@ -28,7 +28,7 @@ export const toyService = {
     getDefaultSort,
     getToyLabels,
     getToyLabelCounts,
-    addToyMsg
+    addToyMsg,
 }
 
 function query(filterBy = {}, sortBy = {}, pageIdx = 0) {
@@ -51,8 +51,8 @@ function remove(toyId) {
 
 
 function save(toy) {
-    if (toy._id) return httpService.put('toy', toy)
-    else return httpService.post('toy', toy)
+    if (toy._id) return httpService.put(`toy/${toy._id}`, toy) 
+    else return httpService.post('toy', toy) 
 }
 
 function getDefaultFilter() {

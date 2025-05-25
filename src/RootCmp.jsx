@@ -15,6 +15,8 @@ import { UserMsg } from './cmps/UserMsg.jsx'
 import { UserDetails } from './pages/UserDetails.jsx'
 import { ReviewExplore } from './pages/ReviewExplore.jsx'
 import { AppFooter } from './cmps/AppFooter.jsx'
+import { socketService } from './services/socket.service.js'
+import { showSuccessMsg } from './services/event-bus.service.js'
 
 
 export function App() {
@@ -25,11 +27,23 @@ export function App() {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIsFading(true)
-      setTimeout(() => setIsLoading(false), 600) // wait for fade animation
+      setTimeout(() => setIsLoading(false), 600)
     }, 1800)
 
     return () => clearTimeout(timeout)
   }, [])
+
+  useEffect(() => {
+    socketService.on('admin-updated', msg => {
+      console.log('📢 Admin updated toy:', msg)
+      showSuccessMsg(msg) // or use your own toast/alert/modal here
+    })
+
+    return () => {
+      socketService.off('admin-updated')
+    }
+  }, [])
+  
   return (
     <Provider store={store}>
       <Router>
@@ -54,7 +68,7 @@ export function App() {
             </main>
             <AppFooter />
           </div>
-           <UserMsg />
+          <UserMsg />
         </section>
       </Router>
     </Provider>

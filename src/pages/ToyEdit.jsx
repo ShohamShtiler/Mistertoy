@@ -67,7 +67,7 @@ export function ToyEdit() {
                 showSuccessMsg(`Toy ${savedToy.name} was saved successfully`)
                 navigate('/toy')
             })
-            .catch(() => showErrorMsg('Cannot save toy'))
+            .catch(() => showErrorMsg('You must be logged in'))
     }
 
     function onImgUploaded(imgUrl) {

@@ -46,7 +46,7 @@ async function logout() {
     }
 }
 
-function getLoggedInUser() {
+export function getLoggedInUser() {
     const entity = sessionStorage.getItem(STORAGE_KEY)
     return JSON.parse(entity)
 }
