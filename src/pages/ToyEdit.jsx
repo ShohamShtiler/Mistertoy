@@ -1,3 +1,4 @@
+import { ImgUploader } from '../cmps/ImgUploader'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
@@ -29,7 +30,8 @@ export function ToyEdit() {
 
     const { register, handleSubmit, setValue, reset, watch, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
-        defaultValues: toyService.getEmptyToy()
+        defaultValues: toyService.getEmptyToy(),
+        imgUrl: ''
     })
 
     const selectedLabels = watch('labels') || []
@@ -59,12 +61,18 @@ export function ToyEdit() {
     }
 
     function onSubmit(toy) {
+         console.log('🔍 Submitting toy:', toy)
         saveToy(toy)
             .then(savedToy => {
-                showSuccessMsg(`Toy ${savedToy._id} saved successfully`)
+                showSuccessMsg(`Toy ${savedToy.name} was saved successfully`)
                 navigate('/toy')
             })
             .catch(() => showErrorMsg('Cannot save toy'))
+    }
+
+    function onImgUploaded(imgUrl) {
+         console.log('✅ Image uploaded and received in form:', imgUrl)
+        setValue('imgUrl', imgUrl, { shouldValidate: true })
     }
 
     return (
@@ -82,6 +90,12 @@ export function ToyEdit() {
                     <label htmlFor="price">Price:</label>
                     <input id="price" type="number" {...register('price')} />
                     {errors.price && <p className="error">{errors.price.message}</p>}
+                </div>
+
+                <div className="form-group">
+                    <label>Image:</label>
+                    <ImgUploader onUploaded={onImgUploaded} />
+                    <input type="hidden" {...register('imgUrl')} /> {/* ✅ This line */}
                 </div>
 
                 <div className="form-group">

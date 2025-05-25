@@ -73,7 +73,7 @@ export function ToyDetails() {
       <h1>{toy.name}</h1>
 
       <div className="img-container">
-        <img src={`/img/${toy.imgUrl}`} alt={toy.name} />
+        <img src={toy.imgUrl.startsWith('http') ? toy.imgUrl : `/img/${toy.imgUrl}`} alt={toy.name} />
       </div>
 
       <h3>Price: ${toy.price}</h3>

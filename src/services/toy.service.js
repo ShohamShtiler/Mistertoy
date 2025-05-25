@@ -73,7 +73,8 @@ function getEmptyToy() {
         name: '',
         price: '',
         labels: _getRandomLabels(),
-        inStock: true
+        inStock: true,
+        imgUrl: ''
     }
 }
 

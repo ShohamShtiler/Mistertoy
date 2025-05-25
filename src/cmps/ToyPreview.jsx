@@ -9,7 +9,7 @@ export function ToyPreview({ toy }) {
     setImgLoading(false)
   }
 
-  const imgSrc = `/img/${toy.imgUrl || 'fallback.jpg'}`
+ const imgSrc = toy.imgUrl?.startsWith('http') ? toy.imgUrl : `/img/${toy.imgUrl || 'fallback.jpg'}`
 
   return (
     <Link to={`/toy/${toy._id}`} className="toy-card">
