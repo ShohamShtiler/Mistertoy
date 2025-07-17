@@ -1,8 +1,19 @@
 # 🧸 Mister Toy
 
-A full-stack toy management platform featuring real-time chat, reviews, authentication, charts, and a fully responsive UI — built with **MongoDB**, **Express**, **React**, and **Node.js**.
+> A **full-stack toy management platform** featuring real-time chat, reviews, authentication, dynamic charts, and a fully responsive UI — built with **MongoDB**, **Express**, **React**, and **Node.js**.
 
-> Pixel-perfect & production-ready 🎯
+---
+
+### 🚀 Live Demo
+- 🧪 [Launch Mister Toy](https://mistertoy-backend-2oeq.onrender.com)
+
+---
+
+### 🏷️ Tech Highlights
+- 🎨 Pixel-perfect design with SCSS architecture
+- 🔒 Secure Auth with role-based access
+- 🗺️ Interactive map with multiple shop locations
+- 📈 Real-time charts and WebSocket chat
 
 ---
 
