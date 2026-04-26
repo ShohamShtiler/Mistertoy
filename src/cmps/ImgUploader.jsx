@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { uploadService } from '../services/upload.service'
+import  imgUploader from '../assets/style/img/image-uploader.png'
 
 
 export function ImgUploader({ onUploaded = null }) {
@@ -44,7 +45,7 @@ export function ImgUploader({ onUploaded = null }) {
                 onDragOver={console.log}
             // onDragOver={ev => ev.preventDefault()}
             >
-                <img src={imgData.imgUrl || 'https://static-00.iconduck.com/assets.00/profile-default-icon-2048x2045-u3j7s5nj.png'} style={{ width: '100px', height: '100px' }} />
+                <img src={imgData.imgUrl || imgUploader } style={{ width: '60px', height: '60px' }} />
 
                 <input hidden
                     type="file"
